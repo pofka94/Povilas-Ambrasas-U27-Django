@@ -1,0 +1,9 @@
+{% extends "wiki/base.html" %}
+
+{% block create_view %}
+        <form method="post">{% csrf_token %}
+            {{ form.title }}
+            {{ form.content }}
+            <input type="submit" value="Submit"/>
+        </form>
+{% endblock create_view %}

@@ -1,0 +1,29 @@
+{% extends "wiki/base.html" %}
+
+{% block title %} Edit/Create form {% endblock %}
+
+{% block page_form %}
+    <div class="form-group">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">{{ form.title.label_tag }}</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">{{ form.content.label_tag }}</label>
+                {{ form.content}}
+            </div>
+            <div class="mb-3">
+                {{ form.image }}
+            </div>
+            <input type="submit" value="Submit" name='ok' class="btn btn-success" />
+            <a href="{% url 'wiki:index' %}" value="Cancel" class="btn btn-danger">Cancel</a>
+        </form>
+    
+    </div>
+    <script>
+    simplemde = new SimpleMDE({forceSync: true})
+    </script>
+{% endblock page_form %}

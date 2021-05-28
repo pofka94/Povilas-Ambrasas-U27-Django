@@ -1,0 +1,18 @@
+{% extends "wiki/base.html" %}
+
+{% block body %}
+    {% if page_list %}
+        <ul class="list-group">
+        {% for page in page_list %}
+            <li class="btn-group">
+                <a href="{{ page.get_absolute_url }}" class="list-group-item list-group-item-action">{{ page.title }}</a> 
+                {% if user.is_authenticated %}
+                    <a href="{% url 'wiki:delete_page' page.slug %}" class="btn btn-danger btn-sm">Delete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No links are available.</p>
+    {% endif %}
+{% endblock body %}
